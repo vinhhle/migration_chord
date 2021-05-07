@@ -1,0 +1,120 @@
+---
+output:
+  html_document:
+    code_folding: hide
+---
+
+<font size ="5"><center> **Migration Flows In Europe**</center></font>
+
+----
+
+The two chord diagrams show the emigration flows between 9 European countries in 2015. The dataset comes from the [Organisation for Economic Co-operation and Development](https://stats.oecd.org/). 
+
+**How to read the chord diagram** 
+
+- The external arcs with the country names and ticks represent the total of people left that country to other countries in the circle. 
+- The sizes of each chord connecting two countries are proportional to the number of migrated people.
+- The color of each chord is that of the country with the lower number. For example, the chord between the UK and Germany is gray, meaning that fewer people migrate from the UK to Germany than from Germany to the UK. In fact, this can also be noticed by the width of each head of the chord.   
+- This is an interactive diagram, so you can move the mouse over each arc or flow to see the exact numbers.
+
+```{r message = FALSE, warning = FALSE, fig.align='center', out.width='100%'}
+library(tidyverse)
+library(shiny)
+#devtools::install_github("mattflor/chorddiag")
+library(chorddiag)
+
+color_palette <- RColorBrewer::brewer.pal(n = 9, "Set3")
+country_list <- c("Austria", "Belgium", "Denmark", "France", "Germany", "Italy", "Netherlands", "Spain", "United Kingdom" )
+
+#immigration_2013 <- read.csv("/Users/huvi/Downloads/inflow_foreign_population_by_country.csv") %>% 
+  #filter(Country.of.birth.nationality %in% country_list, Country %in% country_list, Year == 2013)%>% 
+  #select(from_country = Country.of.birth.nationality, to_country = Country, value = Value) %>% 
+  #filter(!(from_country == to_country)) %>% 
+  #spread(from_country, value)%>% 
+  #select(2:10) %>% 
+  #as.matrix()
+
+immigration_2015 <- read.csv("/Users/huvi/Downloads/inflow_foreign_population_by_country.csv") %>% 
+  filter(Country.of.birth.nationality %in% country_list, Country %in% country_list, Year == 2015)%>% 
+  select(from_country = Country.of.birth.nationality, to_country = Country, value = Value) %>% 
+  filter(!(from_country == to_country)) %>% 
+  spread(from_country, value)%>% 
+  select(2:10) %>% 
+  as.matrix()
+
+#chord_2013 <- chorddiag(immigration_2013, 
+          #type = "directional", #default 
+          #width = "700px",
+          #height = "700px",
+          #showGroupnames = TRUE, #name of each subject
+          #groupColors = color_palette,
+          #groupThickness = 0.12, #thickness of the outer circle
+          #groupnamePadding = 40, # distance between the name and outer circle
+          #groupnameFontsize = 11, 
+          #groupedgeColor = "#f5f5f5", 
+          #chordedgeColor = "#f5f5f5",
+          #showTicks = T,
+          #ticklabelFontsize = 8,
+          #fadeLevel = 0.1, # fade level of other parts when hovering the mouse
+          #tickInterval = 3000,
+          #tooltipUnit = " people",
+          #tooltipFontsize = 15,
+          #tooltipGroupConnector = " to "
+          #)
+
+chorddiag(immigration_2015, 
+          type = "directional", #default 
+          width = "800px",
+          height = "800px",
+          showGroupnames = TRUE, #name of each subject
+          groupColors = color_palette,
+          groupThickness = 0.12, #thickness of the outer circle
+          groupnamePadding = 40, # distance between the name and outer circle
+          groupnameFontsize = 11, 
+          groupedgeColor = "#f5f5f5", 
+          chordedgeColor = "#f5f5f5",
+          showTicks = T,
+          ticklabelFontsize = 8,
+          fadeLevel = 0.1, # fade level of other parts when hovering the mouse
+          tickInterval = 3000,
+          tooltipUnit = " people",
+          tooltipFontsize = 15,
+          tooltipGroupConnector = " to "
+          )
+
+
+```
+**Some highlights**
+
+- There were not significant changes in migration flows between 2013 and 2015.
+- Germany had the largest number of emigrated people to other countries, followed by the UK, Spain, and France 
+- Spain has most chords in its own color, meaning that most countries migrate to Spain more than from Spain to these countries.
+- Germany has chords with various colors, meaning that German people migrate to many countries more than people from these countries to Germany.
+
+```{r eval = FALSE, echo = FALSE}
+ui <- fluidPage(
+  br(),
+  br(),
+  radioButtons('select_year',"Select Year",inline = TRUE,
+               choices = c(2013,2015),
+               selected = 2013),
+  chorddiagOutput("distPlot", height = 700)
+  )
+
+server <- function(input, output) {
+   
+  output$distPlot <- renderChorddiag({
+    
+       if(input$select_year == 2013){
+         chord_2013
+       }else{
+         chord_2015
+       }
+  })
+}
+
+shinyApp(ui, server, options = list(height = 850))
+```
+
+
+

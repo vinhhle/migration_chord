@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>index.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/d3-4.13.0/d3.min.js"></script>
+<script src="site_libs/d3-tip-0.8.1/index.js"></script>
+<link href="site_libs/chorddiag-0.1.2.9000/chorddiag.css" rel="stylesheet" />
+<script src="site_libs/chorddiag-0.1.2.9000/chorddiag.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Data Viz</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<font size ="5">
+<center>
+<strong>Migration Flows In Europe</strong>
+</center>
+<p></font></p>
+<hr />
+<p>The two chord diagrams show the emigration flows between 9 European countries in 2015. The dataset comes from the <a href="https://stats.oecd.org/">Organisation for Economic Co-operation and Development</a>.</p>
+<p><strong>How to read the chord diagram</strong></p>
+<ul>
+<li>The external arcs with the country names and ticks represent the total of people left that country to other countries in the circle.</li>
+<li>The sizes of each chord connecting two countries are proportional to the number of migrated people.</li>
+<li>The color of each chord is that of the country with the lower number. For example, the chord between the UK and Germany is gray, meaning that fewer people migrate from the UK to Germany than from Germany to the UK. In fact, this can also be noticed by the width of each head of the chord.<br />
+</li>
+<li>This is an interactive diagram, so you can move the mouse over each arc or flow to see the exact numbers.</li>
+</ul>
+<pre class="r"><code>library(tidyverse)
+library(shiny)
+#devtools::install_github(&quot;mattflor/chorddiag&quot;)
+library(chorddiag)
+
+color_palette &lt;- RColorBrewer::brewer.pal(n = 9, &quot;Set3&quot;)
+country_list &lt;- c(&quot;Austria&quot;, &quot;Belgium&quot;, &quot;Denmark&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Italy&quot;, &quot;Netherlands&quot;, &quot;Spain&quot;, &quot;United Kingdom&quot; )
+
+#immigration_2013 &lt;- read.csv(&quot;/Users/huvi/Downloads/inflow_foreign_population_by_country.csv&quot;) %&gt;% 
+  #filter(Country.of.birth.nationality %in% country_list, Country %in% country_list, Year == 2013)%&gt;% 
+  #select(from_country = Country.of.birth.nationality, to_country = Country, value = Value) %&gt;% 
+  #filter(!(from_country == to_country)) %&gt;% 
+  #spread(from_country, value)%&gt;% 
+  #select(2:10) %&gt;% 
+  #as.matrix()
+
+immigration_2015 &lt;- read.csv(&quot;/Users/huvi/Downloads/inflow_foreign_population_by_country.csv&quot;) %&gt;% 
+  filter(Country.of.birth.nationality %in% country_list, Country %in% country_list, Year == 2015)%&gt;% 
+  select(from_country = Country.of.birth.nationality, to_country = Country, value = Value) %&gt;% 
+  filter(!(from_country == to_country)) %&gt;% 
+  spread(from_country, value)%&gt;% 
+  select(2:10) %&gt;% 
+  as.matrix()
+
+#chord_2013 &lt;- chorddiag(immigration_2013, 
+          #type = &quot;directional&quot;, #default 
+          #width = &quot;700px&quot;,
+          #height = &quot;700px&quot;,
+          #showGroupnames = TRUE, #name of each subject
+          #groupColors = color_palette,
+          #groupThickness = 0.12, #thickness of the outer circle
+          #groupnamePadding = 40, # distance between the name and outer circle
+          #groupnameFontsize = 11, 
+          #groupedgeColor = &quot;#f5f5f5&quot;, 
+          #chordedgeColor = &quot;#f5f5f5&quot;,
+          #showTicks = T,
+          #ticklabelFontsize = 8,
+          #fadeLevel = 0.1, # fade level of other parts when hovering the mouse
+          #tickInterval = 3000,
+          #tooltipUnit = &quot; people&quot;,
+          #tooltipFontsize = 15,
+          #tooltipGroupConnector = &quot; to &quot;
+          #)
+
+chorddiag(immigration_2015, 
+          type = &quot;directional&quot;, #default 
+          width = &quot;800px&quot;,
+          height = &quot;800px&quot;,
+          showGroupnames = TRUE, #name of each subject
+          groupColors = color_palette,
+          groupThickness = 0.12, #thickness of the outer circle
+          groupnamePadding = 40, # distance between the name and outer circle
+          groupnameFontsize = 11, 
+          groupedgeColor = &quot;#f5f5f5&quot;, 
+          chordedgeColor = &quot;#f5f5f5&quot;,
+          showTicks = T,
+          ticklabelFontsize = 8,
+          fadeLevel = 0.1, # fade level of other parts when hovering the mouse
+          tickInterval = 3000,
+          tooltipUnit = &quot; people&quot;,
+          tooltipFontsize = 15,
+          tooltipGroupConnector = &quot; to &quot;
+          )</code></pre>
+<div id="htmlwidget-be6cc9bc45f302b64201" style="width:800px;height:800px;" class="chorddiag html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be6cc9bc45f302b64201">{"x":{"matrix":[[null,359,166,1199,17028,4611,975,1613,1401],[225,null,221,11977,2455,5105,8125,4137,1739],[135,141,null,840,2039,1483,663,1030,1404],[414,6429,352,null,7119,13247,2142,12363,9760],[10181,2833,2249,14908,null,57191,10512,23598,10726],[220,302,108,1703,1449,null,455,1906,1482],[609,2731,507,4038,8622,5713,null,4957,5766],[539,2705,707,9020,6745,18645,3251,null,14991],[1000,2000,5000,15000,10000,26000,8000,20000,null]],"options":{"type":"directional","width":"800px","height":"800px","margin":100,"showGroupnames":true,"groupNames":["Austria","Belgium","Denmark","France","Germany","Italy","Netherlands","Spain","United Kingdom"],"groupColors":["#8DD3C7","#FFFFB3","#BEBADA","#FB8072","#80B1D3","#FDB462","#B3DE69","#FCCDE5","#D9D9D9"],"groupThickness":0.12,"groupPadding":0.0349065850398866,"groupnamePadding":[40,40,40,40,40,40,40,40,40],"groupnameFontsize":11,"groupedgeColor":"#f5f5f5","chordedgeColor":"#f5f5f5","categoryNames":null,"categorynamePadding":100,"categorynameFontsize":28,"showTicks":true,"tickInterval":3000,"ticklabelFontsize":8,"fadeLevel":0.1,"showTooltips":true,"showZeroTooltips":true,"tooltipNames":["Austria","Belgium","Denmark","France","Germany","Italy","Netherlands","Spain","United Kingdom"],"tooltipFontsize":15,"tooltipUnit":" people","tooltipGroupConnector":" to ","precision":"null","clickAction":null,"clickGroupAction":null}},"evals":[],"jsHooks":[]}</script>
+<p><strong>Some highlights</strong></p>
+<ul>
+<li>There were not significant changes in migration flows between 2013 and 2015.</li>
+<li>Germany had the largest number of emigrated people to other countries, followed by the UK, Spain, and France</li>
+<li>Spain has most chords in its own color, meaning that most countries migrate to Spain more than from Spain to these countries.</li>
+<li>Germany has chords with various colors, meaning that German people migrate to many countries more than people from these countries to Germany.</li>
+</ul>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
